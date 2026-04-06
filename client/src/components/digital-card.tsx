@@ -66,15 +66,15 @@ export default function DigitalCard({ card }: DigitalCardProps) {
       
       {/* Card Header */}
       <div className="flex justify-between items-start mb-6">
-        {/* Studio Logo with ViVi text */}
+        {/* Studio Logo */}
         <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center shadow-lg relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-purple-400/20 to-pink-400/20"></div>
-          <span className="text-white font-bold text-lg tracking-wider relative z-10" style={{ 
-            fontFamily: 'Brush Script MT, cursive, Georgia, serif',
+          <span className="text-white font-bold text-sm tracking-wider relative z-10" style={{ 
+            fontFamily: 'Arial, sans-serif',
             textShadow: '0 2px 4px rgba(0,0,0,0.3)',
             letterSpacing: '1px'
           }}>
-            ViVi
+            ЭНСО
           </span>
         </div>
         
@@ -90,7 +90,7 @@ export default function DigitalCard({ card }: DigitalCardProps) {
         <h1 className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
           Клубная карта
         </h1>
-        <p className="text-gray-400 text-sm">Студия лазерной эпиляции ViVi</p>
+        <p className="text-gray-400 text-sm">Студия лазерной эпиляции ЭНСО</p>
       </div>
 
       {/* Client Information */}
@@ -104,15 +104,11 @@ export default function DigitalCard({ card }: DigitalCardProps) {
       {/* Status Warning */}
       {getStatusWarning()}
 
-      {/* Card Details Grid - Improved symmetry */}
-      <div className="grid grid-cols-2 gap-4 mb-6">
+      {/* Card Details */}
+      <div className="mb-6">
         <div className="bg-gray-800/50 rounded-xl p-4">
           <p className="text-xs text-gray-500 uppercase tracking-wide mb-1">Тип карты</p>
           <p className="font-semibold text-yellow-400">{card.cardType}</p>
-        </div>
-        <div className="bg-gray-800/50 rounded-xl p-4">
-          <p className="text-xs text-gray-500 uppercase tracking-wide mb-1">ID клиента</p>
-          <p className="font-mono text-sm text-gray-300">{card.clientId}</p>
         </div>
       </div>
 

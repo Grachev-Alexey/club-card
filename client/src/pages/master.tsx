@@ -78,18 +78,22 @@ function LoginScreen({ onLogin }: { onLogin: () => void }) {
   );
 }
 
+function generateId(): string {
+  return Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
+}
+
 // ── Create card modal ────────────────────────────────────────────────────────
 function CreateCardModal({ onClose }: { onClose: () => void }) {
-  const [clientId, setClientId] = useState("");
   const [clientName, setClientName] = useState("");
   const [cardType, setCardType] = useState(CARD_TYPES[0]);
 
   const createMutation = useMutation({
     mutationFn: async () => {
+      const clientId = generateId();
       const res = await fetch("/api/master/create-card", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ pin: PIN, clientId: clientId.trim(), clientName: clientName.trim(), cardType }),
+        body: JSON.stringify({ pin: PIN, clientId, clientName: clientName.trim(), cardType }),
       });
       if (!res.ok) {
         const data = await res.json();
@@ -118,17 +122,6 @@ function CreateCardModal({ onClose }: { onClose: () => void }) {
 
         <div className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-gray-300 mb-1">ID клиента</label>
-            <input
-              type="text"
-              value={clientId}
-              onChange={(e) => setClientId(e.target.value)}
-              className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-pink-500"
-              placeholder="Уникальный идентификатор"
-            />
-          </div>
-
-          <div>
             <label className="block text-sm font-medium text-gray-300 mb-1">Имя клиента</label>
             <input
               type="text"
@@ -136,6 +129,7 @@ function CreateCardModal({ onClose }: { onClose: () => void }) {
               onChange={(e) => setClientName(e.target.value)}
               className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-pink-500"
               placeholder="Фамилия Имя"
+              autoFocus
             />
           </div>
 
@@ -161,7 +155,7 @@ function CreateCardModal({ onClose }: { onClose: () => void }) {
             </button>
             <button
               onClick={() => createMutation.mutate()}
-              disabled={!clientId.trim() || !clientName.trim() || createMutation.isPending}
+              disabled={!clientName.trim() || createMutation.isPending}
               className="flex-1 bg-gradient-to-r from-purple-500 to-pink-500 text-white py-3 rounded-lg font-medium hover:from-purple-600 hover:to-pink-600 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {createMutation.isPending ? (

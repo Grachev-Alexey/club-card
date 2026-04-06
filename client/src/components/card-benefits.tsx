@@ -36,7 +36,7 @@ export default function CardBenefits() {
         <h3 className="text-xl font-bold mb-2 bg-gradient-to-r from-pink-400 via-purple-400 to-yellow-400 bg-clip-text text-transparent">
           ✨ ЭКСКЛЮЗИВНЫЕ ПРИВИЛЕГИИ ✨
         </h3>
-        <p className="text-gray-300 text-sm">Только для владельцев клубных карт ViVi</p>
+        <p className="text-gray-300 text-sm">Только для владельцев клубных карт ЭНСО</p>
       </div>
       
       <div className="space-y-5">
