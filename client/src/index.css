@@ -1,0 +1,317 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(0, 0%, 100%);
+  --foreground: hsl(20, 14.3%, 4.1%);
+  --muted: hsl(60, 4.8%, 95.9%);
+  --muted-foreground: hsl(25, 5.3%, 44.7%);
+  --popover: hsl(0, 0%, 100%);
+  --popover-foreground: hsl(20, 14.3%, 4.1%);
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(20, 14.3%, 4.1%);
+  --border: hsl(20, 5.9%, 90%);
+  --input: hsl(20, 5.9%, 90%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(60, 4.8%, 95.9%);
+  --secondary-foreground: hsl(24, 9.8%, 10%);
+  --accent: hsl(60, 4.8%, 95.9%);
+  --accent-foreground: hsl(24, 9.8%, 10%);
+  --destructive: hsl(0, 84.2%, 60.2%);
+  --destructive-foreground: hsl(60, 9.1%, 97.8%);
+  --ring: hsl(20, 14.3%, 4.1%);
+  --radius: 0.5rem;
+  
+  /* Custom properties for premium dark theme */
+  --premium-dark: hsl(0, 0%, 5.9%);
+  --card-dark: hsl(0, 0%, 11.8%);
+  --accent-lavender: hsl(258, 90%, 66%);
+  --accent-pink: hsl(328, 86%, 70%);
+  --accent-gold: hsl(45, 93%, 58%);
+}
+
+.dark {
+  --background: hsl(0, 0%, 5.9%);
+  --foreground: hsl(0, 0%, 98%);
+  --muted: hsl(240, 3.7%, 15.9%);
+  --muted-foreground: hsl(240, 5%, 64.9%);
+  --popover: hsl(240, 10%, 3.9%);
+  --popover-foreground: hsl(0, 0%, 98%);
+  --card: hsl(240, 10%, 3.9%);
+  --card-foreground: hsl(0, 0%, 98%);
+  --border: hsl(240, 3.7%, 15.9%);
+  --input: hsl(240, 3.7%, 15.9%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(240, 3.7%, 15.9%);
+  --secondary-foreground: hsl(0, 0%, 98%);
+  --accent: hsl(240, 3.7%, 15.9%);
+  --accent-foreground: hsl(0, 0%, 98%);
+  --destructive: hsl(0, 62.8%, 30.6%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(240, 4.9%, 83.9%);
+  --radius: 0.5rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased text-foreground;
+    background: var(--premium-dark);
+  }
+}
+
+@layer utilities {
+  .premium-dark {
+    background: var(--premium-dark);
+  }
+  
+  .card-dark {
+    background: var(--card-dark);
+  }
+  
+  .accent-lavender {
+    color: var(--accent-lavender);
+  }
+  
+  .accent-pink {
+    color: var(--accent-pink);
+  }
+  
+  .accent-gold {
+    color: var(--accent-gold);
+  }
+  
+  .bg-accent-lavender {
+    background-color: var(--accent-lavender);
+  }
+  
+  .bg-accent-pink {
+    background-color: var(--accent-pink);
+  }
+  
+  .bg-accent-gold {
+    background-color: var(--accent-gold);
+  }
+}
+
+/* Custom animations */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slide-up {
+  from { 
+    transform: translateY(20px); 
+    opacity: 0; 
+  }
+  to { 
+    transform: translateY(0); 
+    opacity: 1; 
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { 
+    box-shadow: 0 0 20px rgba(167, 139, 250, 0.3); 
+  }
+  50% { 
+    box-shadow: 0 0 30px rgba(167, 139, 250, 0.5); 
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes gentle-pulse {
+  0%, 100% { 
+    box-shadow: 0 0 20px rgba(244, 114, 182, 0.4), 0 0 40px rgba(244, 114, 182, 0.1); 
+  }
+  50% { 
+    box-shadow: 0 0 30px rgba(244, 114, 182, 0.7), 0 0 60px rgba(244, 114, 182, 0.2); 
+  }
+}
+
+
+@keyframes status-change {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.1); opacity: 0.7; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes count-down {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes warning-pulse {
+  0%, 100% { 
+    box-shadow: 0 0 15px rgba(251, 146, 60, 0.4); 
+  }
+  50% { 
+    box-shadow: 0 0 30px rgba(251, 146, 60, 0.7); 
+  }
+}
+
+@keyframes pink-pulse {
+  0%, 100% { 
+    box-shadow: 0 0 20px rgba(236, 72, 153, 0.5), 0 0 40px rgba(236, 72, 153, 0.2); 
+  }
+  50% { 
+    box-shadow: 0 0 35px rgba(236, 72, 153, 0.8), 0 0 60px rgba(236, 72, 153, 0.4); 
+  }
+}
+
+@keyframes expired-flash {
+  0%, 100% { 
+    box-shadow: 0 0 15px rgba(239, 68, 68, 0.3); 
+  }
+  50% { 
+    box-shadow: 0 0 25px rgba(239, 68, 68, 0.5); 
+  }
+}
+
+@keyframes premium-float {
+  0%, 100% { 
+    transform: translateY(0px);
+  }
+  50% { 
+    transform: translateY(-3px);
+  }
+}
+
+@keyframes subtle-glow {
+  0%, 100% { 
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  }
+  50% { 
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
+  }
+}
+
+@keyframes elegant-entrance {
+  0% { 
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  100% { 
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes stagger-entrance-1 {
+  0% { 
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes stagger-entrance-2 {
+  0% { 
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes stagger-entrance-3 {
+  0% { 
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.5s ease-in-out;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.3s ease-out;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s infinite;
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite linear;
+}
+
+.animate-gentle-pulse {
+  animation: gentle-pulse 3s infinite ease-in-out;
+}
+
+
+.animate-premium-float {
+  animation: premium-float 4s ease-in-out infinite;
+}
+
+.animate-subtle-glow {
+  animation: subtle-glow 3s ease-in-out infinite;
+}
+
+.animate-elegant-entrance {
+  animation: elegant-entrance 0.6s ease-out;
+}
+
+.animate-stagger-1 {
+  animation: stagger-entrance-1 0.8s ease-out 0.1s both;
+}
+
+.animate-stagger-2 {
+  animation: stagger-entrance-2 0.8s ease-out 0.2s both;
+}
+
+.animate-stagger-3 {
+  animation: stagger-entrance-3 0.8s ease-out 0.3s both;
+}
+
+.animate-status-change {
+  animation: status-change 0.5s ease-in-out;
+}
+
+.animate-count-down {
+  animation: count-down 0.3s ease-in-out;
+}
+
+.animate-warning-pulse {
+  animation: warning-pulse 2s infinite ease-in-out;
+}
+
+.animate-pink {
+  animation: pink-pulse 2s infinite ease-in-out;
+}
+
+.animate-expired-flash {
+  animation: expired-flash 1.5s infinite ease-in-out;
+}
+
+/* Smooth transitions */
+.transition-all-smooth {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.transition-colors-smooth {
+  transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
