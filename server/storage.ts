@@ -5,7 +5,9 @@ import { formatClientName } from "./lib/name-formatter";
 
 export interface IStorage {
   getClubCard(clientId: string): Promise<ClubCard | undefined>;
+  getAllClubCards(): Promise<ClubCard[]>;
   createOrUpdateClubCard(card: InsertClubCard): Promise<ClubCard>;
+  deleteClubCard(clientId: string): Promise<void>;
   addVisit(visit: InsertVisit): Promise<Visit>;
   getVisits(clientId: string): Promise<Visit[]>;
 }
@@ -13,27 +15,33 @@ export interface IStorage {
 export class DatabaseStorage implements IStorage {
   async getClubCard(clientId: string): Promise<ClubCard | undefined> {
     const [card] = await db.select().from(clubCards).where(eq(clubCards.clientId, clientId));
-    
+
     if (card) {
-      // Форматируем имя клиента при получении из базы данных
       return {
         ...card,
-        clientName: formatClientName(card.clientName)
+        clientName: formatClientName(card.clientName),
       };
     }
-    
+
     return undefined;
   }
 
+  async getAllClubCards(): Promise<ClubCard[]> {
+    const cards = await db.select().from(clubCards).orderBy(desc(clubCards.createdAt));
+    return cards.map((card) => ({
+      ...card,
+      clientName: formatClientName(card.clientName),
+    }));
+  }
+
   async createOrUpdateClubCard(cardData: InsertClubCard): Promise<ClubCard> {
-    // Форматируем имя клиента перед сохранением
     const formattedCardData = {
       ...cardData,
-      clientName: formatClientName(cardData.clientName)
+      clientName: formatClientName(cardData.clientName),
     };
 
     const existingCard = await this.getClubCard(formattedCardData.clientId);
-    
+
     if (existingCard) {
       const [updatedCard] = await db
         .update(clubCards)
@@ -43,29 +51,27 @@ export class DatabaseStorage implements IStorage {
         })
         .where(eq(clubCards.clientId, formattedCardData.clientId))
         .returning();
-      
+
       return {
         ...updatedCard,
-        clientName: formatClientName(updatedCard.clientName)
+        clientName: formatClientName(updatedCard.clientName),
       };
     } else {
-      const [newCard] = await db
-        .insert(clubCards)
-        .values(formattedCardData)
-        .returning();
-      
+      const [newCard] = await db.insert(clubCards).values(formattedCardData).returning();
+
       return {
         ...newCard,
-        clientName: formatClientName(newCard.clientName)
+        clientName: formatClientName(newCard.clientName),
       };
     }
   }
 
+  async deleteClubCard(clientId: string): Promise<void> {
+    await db.delete(clubCards).where(eq(clubCards.clientId, clientId));
+  }
+
   async addVisit(visitData: InsertVisit): Promise<Visit> {
-    const [visit] = await db
-      .insert(visits)
-      .values(visitData)
-      .returning();
+    const [visit] = await db.insert(visits).values(visitData).returning();
     return visit;
   }
 
