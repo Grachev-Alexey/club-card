@@ -1,7 +1,7 @@
 {
-  "name": "ViVi Club Card - Студия лазерной эпиляции",
-  "short_name": "ViVi Card",
-  "description": "Цифровая клубная карта студии лазерной эпиляции ViVi",
+  "name": "ЭНСО Club Card - Студия лазерной эпиляции",
+  "short_name": "ЭНСО",
+  "description": "Цифровая клубная карта студии лазерной эпиляции ЭНСО",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0f0f23",

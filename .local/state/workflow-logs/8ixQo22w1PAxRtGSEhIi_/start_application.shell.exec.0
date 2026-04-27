@@ -1,0 +1,21 @@
+
+> rest-express@1.0.0 dev
+> tsx server/index.ts
+
+[1G[0KAmoCRM configured: {
+  domain: [32m'wuuuu.amocrm.ru'[39m,
+  clientIdFieldId: [33m1169601[39m,
+  cardTypeFieldId: [33m1181149[39m
+}
+
+🚀 Digital Club Cards Application
+📱 Frontend: http://localhost:5000
+🔧 API: http://localhost:5000/api
+🌍 Environment: development
+
+Press Ctrl+C to stop the server
+
+8:48:12 AM [express] serving on port 5000
+Browserslist: browsers data (caniuse-lite) is 11 months old. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme

@@ -1,0 +1,18 @@
+
+> rest-express@1.0.0 dev
+> tsx server/index.ts
+
+[1G[0K
+🚀 Digital Club Cards Application
+📱 Frontend: http://localhost:5000
+🔧 API: http://localhost:5000/api
+🌍 Environment: development
+
+Press Ctrl+C to stop the server
+
+9:15:43 AM [express] serving on port 5000
+Browserslist: browsers data (caniuse-lite) is 11 months old. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+✅ Connected to PostgreSQL database
+9:15:57 AM [express] POST /api/master/cards 200 in 17ms :: [{"id":1,"clientId":"1234","clientName":"…

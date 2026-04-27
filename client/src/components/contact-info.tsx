@@ -62,14 +62,14 @@ export default function ContactInfo() {
         <p className="text-sm text-gray-400 mb-2">Вопросы по карте?</p>
         <div className="flex items-center justify-center space-x-4 mb-4">
           <a 
-            href="tel:+79697771485" 
+            href="tel:+79044160281" 
             className="flex items-center text-purple-400 hover:text-pink-400 transition-all duration-300 hover:transform hover:scale-105"
           >
             <i className="fas fa-phone mr-2"></i>
-            +7 (969) 777-14-85
+            +7 (904) 416-02-81
           </a>
           <a 
-            href="https://wa.me/79956638625" 
+            href="https://wa.me/79044160281" 
             className="flex items-center text-green-400 hover:text-green-300 transition-all duration-300 hover:transform hover:scale-105"
           >
             <i className="fab fa-whatsapp mr-2"></i>
